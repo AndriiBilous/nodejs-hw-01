@@ -4,7 +4,8 @@ import fs from 'fs/promises';
 export const getAllContacts = async () => {
   try {
     const contactData = await fs.readFile(PATH_DB, 'utf8');
-    return contactData;
+    const result = JSON.parse(contactData);
+    return result;
   } catch (err) {
     console.error('Помилка читання файлу:', err);
   }
